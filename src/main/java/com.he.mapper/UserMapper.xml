@@ -2,6 +2,16 @@
 <DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.he.dao.UserDao">
-	
+	<!--和mysql中 t_user中字段一一对应  -->
+	<resultMap id="BaseResultMap" type="com.he.domain.User">
+		<id column="user_id" property="user_id" jdbcType="Integer"/>
+		<result column="user_name" property="username" jdbcType="CHAR"/>
+		<result column="user_password" property="userPassword" jdbcType="CHAR"/>
+		<result colum="user_email" property="userEmail" jdbcType="CHAR"/>
+	</resultMap>
+	<!-- 查询单条记录 -->
+	<select id="selectUserByID" prarmeterType="int" resultMap="BaseResultMap">
+		select * from t_user where user_id  = #{userId}
+	</select>
 </mapper>
 </DOCTYPE>
